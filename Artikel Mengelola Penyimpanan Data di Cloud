@@ -1,0 +1,103 @@
+ JUDUL
+
+**Mengelola Penyimpanan Data di Cloud**
+
+---
+
+1. TEORI
+
+Cloud database adalah sistem penyimpanan data yang dijalankan di infrastruktur cloud, sehingga pengguna tidak perlu mengelola server secara langsung. Cloud database memiliki beberapa karakteristik utama seperti scalable (dapat diperbesar sesuai kebutuhan), managed service (dikelola oleh penyedia layanan), high availability (selalu tersedia), dan pay-as-you-go (membayar sesuai penggunaan).
+
+Dalam pengelolaan data di cloud, terdapat dua jenis database yang umum digunakan, yaitu SQL dan NoSQL.
+
+SQL (Structured Query Language) merupakan database berbasis relasional yang menggunakan tabel dengan struktur yang tetap (fixed schema). SQL cocok digunakan untuk kebutuhan transaksi dan laporan karena memiliki konsistensi data yang tinggi. Contoh database SQL adalah PostgreSQL.
+
+Sedangkan NoSQL merupakan database non-relasional yang memiliki struktur data fleksibel (flexible schema). NoSQL cocok digunakan untuk data yang tidak terstruktur seperti log, event, dan data operasional. Contoh database NoSQL adalah MongoDB.
+
+Perbedaan utama SQL dan NoSQL terletak pada model data, struktur schema, serta penggunaan dalam sistem. SQL lebih cocok untuk data terstruktur dan analisis, sedangkan NoSQL lebih cocok untuk data fleksibel dan skala besar.
+
+---
+
+2. PRAKTIK
+
+ 🔹 2.1 Cloud SQL (PostgreSQL)
+
+Pada praktik ini digunakan layanan cloud database PostgreSQL melalui Neon.
+
+Langkah pertama adalah membuat database dan tabel dengan struktur sebagai berikut:
+
+* dim_date
+* dim_customer
+* dim_product
+* fact_sales
+
+Setelah tabel dibuat, data dimasukkan ke dalam database menggunakan Python dengan library pandas dan SQLAlchemy.
+
+Data yang digunakan berupa file CSV yang kemudian di-load ke dalam masing-masing tabel menggunakan fungsi `to_sql()`.
+
+---
+
+ 🔹 2.2 Query SQL
+
+Setelah data berhasil dimasukkan, dilakukan analisis menggunakan query SQL.
+
+**Query 1: Total Penjualan per Wilayah**
+
+```sql
+SELECT 
+  region,
+  SUM(net_sales) AS total_penjualan
+FROM fact_sales
+GROUP BY region;
+```
+
+**Query 2: Total Profit per Kategori**
+
+```sql
+SELECT 
+  p.category,
+  SUM(f.profit) AS total_profit
+FROM fact_sales f
+JOIN dim_product p ON f.product_id = p.product_id
+GROUP BY p.category;
+```
+
+---
+
+ 🔹 2.3 Cloud NoSQL (MongoDB)
+
+Pada bagian ini digunakan MongoDB Atlas sebagai database NoSQL.
+
+Langkah yang dilakukan:
+
+1. Membuat cluster MongoDB
+2. Mengatur database access dan network access
+3. Menghubungkan MongoDB dengan Python menggunakan pymongo
+
+Data dari file `raw_retail_transactions.csv` dimasukkan ke dalam collection menggunakan metode `insert_many()`.
+
+---
+
+### 🔹 2.4 Query MongoDB
+
+Analisis data dilakukan menggunakan aggregation pipeline.
+
+```python
+pipeline = [
+  {"$group": {
+      "_id": "$region",
+      "total_sales": {"$sum": "$sales"}
+  }}
+]
+
+result = list(collection.aggregate(pipeline))
+```
+
+Query tersebut digunakan untuk menghitung total penjualan berdasarkan wilayah.
+
+---
+
+KESIMPULAN
+
+Pengelolaan data di cloud memberikan kemudahan dalam penyimpanan, pengolahan, dan analisis data tanpa harus mengelola infrastruktur secara manual. Penggunaan SQL dan NoSQL dapat disesuaikan dengan kebutuhan data dan sistem yang digunakan.
+
