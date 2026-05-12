@@ -1,0 +1,51 @@
+Data Cleaning dan Preprocessing Menggunakan Python
+Pendahuluan
+
+Dalam era digital saat ini, data menjadi aset yang sangat penting bagi perusahaan maupun organisasi. Data digunakan untuk membantu pengambilan keputusan, analisis bisnis, hingga pengembangan teknologi seperti machine learning dan artificial intelligence. Namun, data mentah yang diperoleh dari berbagai sumber sering kali memiliki kualitas yang kurang baik, seperti adanya data kosong, duplikasi, kesalahan format, maupun data yang tidak konsisten. Oleh karena itu, diperlukan proses data cleaning dan preprocessing sebelum data digunakan untuk analisis lebih lanjut.
+
+Data cleaning dan preprocessing merupakan tahapan penting dalam analitik data. Proses ini bertujuan untuk membersihkan dan menyiapkan data agar menjadi lebih akurat, konsisten, dan siap digunakan. Pada praktiknya, proses ini sering dilakukan menggunakan bahasa pemrograman Python karena memiliki banyak library pendukung seperti Pandas, NumPy, Matplotlib, dan Seaborn.
+
+Artikel ini membahas teori dasar data cleaning dan preprocessing serta praktik implementasinya menggunakan Python pada dataset transaksi retail.
+
+A. Teori Data Cleaning dan Preprocessing
+1. Pengertian Data Cleaning
+
+Data cleaning adalah proses membersihkan data dari berbagai masalah kualitas data. Masalah tersebut dapat berupa missing value, data duplikat, kesalahan penulisan, format data yang tidak sesuai, maupun data yang tidak logis. Tujuan utama data cleaning adalah meningkatkan kualitas data sehingga hasil analisis menjadi lebih valid dan akurat.
+
+Contoh data cleaning antara lain:
+
+Menghapus data yang duplikat
+Mengisi nilai kosong
+Memperbaiki format tanggal
+Memeriksa data yang tidak logis
+2. Pengertian Data Preprocessing
+
+Data preprocessing adalah proses mempersiapkan data agar siap digunakan dalam analisis maupun pemodelan data. Setelah data dibersihkan, data biasanya masih perlu diolah kembali agar lebih mudah dianalisis.
+
+Contoh preprocessing antara lain:
+
+Membuat fitur baru
+Encoding data kategori
+Standarisasi format data
+Transformasi data
+3. Pentingnya Data Cleaning dan Preprocessing
+
+Data cleaning dan preprocessing memiliki peran penting karena kualitas hasil analisis sangat bergantung pada kualitas data yang digunakan. Jika data masih kotor atau tidak konsisten, maka hasil analisis juga akan kurang akurat.
+
+Beberapa manfaat data cleaning dan preprocessing:
+
+Mengurangi kesalahan analisis
+Meningkatkan akurasi data
+Mempermudah proses analitik
+Membantu pengambilan keputusan
+Menyiapkan data untuk machine learning dan BI
+4. Python dalam Analitik Data
+
+Python menjadi salah satu bahasa pemrograman yang paling populer dalam bidang analitik data karena mudah digunakan dan memiliki library yang lengkap.
+
+Library utama yang digunakan:
+
+Pandas → manipulasi dan pengolahan data
+NumPy → komputasi numerik
+Matplotlib → visualisasi data
+Seaborn → visualisasi dan insight cepat
